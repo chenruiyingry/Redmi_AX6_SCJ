@@ -81,6 +81,12 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        
+    - name: Modify argon theme
+      run: |
+        cd openwrt/package/lean/
+        rm -rf luci-theme-argon  
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
